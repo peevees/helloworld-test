@@ -1,7 +1,12 @@
 pipeline {
     agent {
        /*dockerfile true*/
-       docker{ image 'mcr.microsoft.com/dotnet/core/runtime:2.2-stretch-slim' }
+       docker
+       { 
+           image 'mcr.microsoft.com/dotnet/core/runtime:2.2-stretch-slim'
+           args '-u root:root' 
+       
+       }
     }
     stages {
      stage('Restore') {
