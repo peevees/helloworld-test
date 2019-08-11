@@ -8,7 +8,7 @@ namespace helloworld
         {
             Console.WriteLine($"Hello World! arguments: {args.Length}");
             throw new Exception("Test Exception");
-            öslajdoijhjwsa
+            //öslajdoijhjwsa
         }
     }
 }
