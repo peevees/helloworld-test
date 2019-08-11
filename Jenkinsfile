@@ -3,9 +3,7 @@ pipeline {
        /*dockerfile true*/
        docker
        { 
-           image 'mcr.microsoft.com/dotnet/core/runtime:2.2-stretch-slim'
-           args '--group-add docker' 
-       
+           image 'mcr.microsoft.com/dotnet/core/runtime:2.2-stretch-slim' 
        }
     }
     stages {
