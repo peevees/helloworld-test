@@ -4,8 +4,6 @@ pipeline {
        docker
        { 
            image 'mcr.microsoft.com/dotnet/core/runtime:2.2-stretch-slim'
-           args '-u root:sudo' 
-       
        }
     }
     stages {
