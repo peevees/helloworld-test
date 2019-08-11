@@ -8,6 +8,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AC513A65-2E86-434E-980E-770A08ACE701}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		Jenkinsfile = Jenkinsfile
+		Dockerfile = Dockerfile
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "helloworldmstest.test", "helloworld.test\helloworldmstest.test.csproj", "{52264A0D-FF2E-4B80-ACB5-5B34BF788ED9}"
