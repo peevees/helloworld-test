@@ -1,0 +1,26 @@
+# To get started with Dependabot version updates, you'll need to specify which
+# package ecosystems to update and where the package manifests are located.
+# Please see the documentation for all configuration options:
+# https://help.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+# one more comment for no reason
+
+version: 2
+updates:
+  - package-ecosystem: "nuget" # See documentation for possible values
+    #should be able to pick .sln file and detect nuget config file in the src folder, undocumented feature!
+    directory: "/" # Location of package manifests
+    registries: "*"
+    schedule:
+      interval: "weekly"
+    target-branch: "master"
+    open-pull-requests-limit: 1
+#    reviewers:
+#      - "organization/group"
+  - package-ecosystem: "github-actions"
+    # Workflow files stored in the
+    # default location of `.github/workflows`
+    directory: "/"
+    schedule:
+      interval: "daily"
+    target-branch: "develop"
+    open-pull-requests-limit: 1
