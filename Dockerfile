@@ -1,2 +1,2 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS base
+FROM mcr.microsoft.com/dotnet/runtime:6.0 AS base
 WORKDIR /app
