@@ -2,9 +2,15 @@ name: .NET Core
 on:
   workflow_dispatch:
   push:
-    branches: [ master ]
+    branches: 
+    - master
+    - main
+    - release/*
   pull_request:
-    branches: [ master ]
+    branches:
+    - master
+    - main
+    - release/*
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -54,3 +60,17 @@ jobs:
       with:
         recreate: true
         path: code-coverage-results.md
+        
+    - name: Git Version
+      # You may pin to the exact commit or the version.
+      # uses: codacy/git-version@fa06788276d7492a2af01662649696d249ecf4cb
+      uses: codacy/git-version@2.4.0
+      with:
+        # The name of the release branch
+        release-branch: master # default is master
+        # The name of the dev branch
+        dev-branch: develop # default is dev
+        # The prefix to use in the version
+        prefix: CICD-Testing # optional
+        # The paths to be used to calculate changes (comma-separated)
+        log-paths: ./ # optional, default is ./        
