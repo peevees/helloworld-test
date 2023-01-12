@@ -1,0 +1,27 @@
+name: Example Action
+
+on: [push]
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    outputs:
+        message: ${{ steps.output_string.outputs.greeting_string }}
+    steps:
+    - name: Output string
+      id: output_string
+      run: | 
+        greeting="greeting_string=Hello, world!"
+        echo $greeting >> $GITHUB_OUTPUT
+    - name: echo output within same job from previous step
+      run: |
+        echo "greetings output from previous step: ${{ steps.output_string.outputs.greeting_string }}"
+      
+
+  job2:
+    needs: [job1]
+    runs-on: ubuntu-latest
+    steps:
+    - name: 
+      run: |
+        echo "greetings output from job1: ${{ needs.job1.outputs.message }}"
