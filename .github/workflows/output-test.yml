@@ -1,6 +1,7 @@
-name: Example Action
+name: Output testing between jobs
 
-on: [push]
+on:
+  workflow_dispatch:
 
 jobs:
   job1:
@@ -22,6 +23,6 @@ jobs:
     needs: [job1]
     runs-on: ubuntu-latest
     steps:
-    - name: 
+    - name: echo specific output from job1
       run: |
         echo "greetings output from job1: ${{ needs.job1.outputs.message }}"
