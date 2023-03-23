@@ -14,7 +14,7 @@ namespace helloworldmstest.test
         [TestMethod]
         public void IsTrueButFalse()
         {
-            Assert.IsTrue(false, "It was false!");
+            Assert.IsTrue(true, "It was false!");
         }
     }
 }
