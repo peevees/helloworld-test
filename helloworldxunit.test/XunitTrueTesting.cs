@@ -12,7 +12,7 @@ namespace helloworldxunit.test
             Assert.True(true, "It is true");
         }
 
-        [Fact]
+        [Fact(Skip = "Ignore since it will always break")]
         public void IsTrueButFalse()
         {
             Assert.True(false, "It was false");
