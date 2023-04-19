@@ -32,14 +32,21 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
     
-    - name: Test
+    - name: Test coverlet code coverage
       run: |
-        dotnet test --configuration Release --no-build --no-restore --verbosity normal --logger trx --collect:"XPlat Code Coverage" --results-directory ./coverage
+        dotnet test --configuration Release --no-build --no-restore --verbosity normal --logger trx --collect:"XPlat Code Coverage" --results-directory ./coverage 
     
+    - name: Test altcover code coverage
+      run: |
+        dotnet test /p:AltCover=true /p:AltCoverReport=".\altcover.xml" /p:AltCoverAssemblyExcludeFilter=NUnit --configuration Release --no-build --no-restore --verbosity normal
+
     # as we have multiple test projects we need to combine them into one
-    - name: Create code coverage report
+    - name: Create code coverage report coverlet
       run: reportgenerator -reports:./**/coverage.cobertura.xml -targetdir:./CodeCoverage -reporttypes:'Cobertura'
     
+    - name: Create code coverage report altcover
+      run: reportgenerator -reports:altcover.xml -targetdir:./altcoverage
+
     # If only running one  test project we could just compy the one to the proper location
     #- name: Copy Coverage To Predictable Location
     #  run: cp coverage/*/coverage.cobertura.xml coverage/coverage.cobertura.xml
@@ -49,7 +56,7 @@ jobs:
       uses: irongut/CodeCoverageSummary@v1.0.2
       with:
         # The one code coverage file
-        filename: ./CodeCoverage/Cobertura.xml 
+        filename: ./CodeCoverage/Cobertura.xml,./altcoverage/Cobertura.xml
         badge: true
         format: 'markdown'
         output: 'both'

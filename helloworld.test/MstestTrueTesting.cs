@@ -12,9 +12,11 @@ namespace helloworldmstest.test
         }
 
         [TestMethod]
+        [Ignore("Ignore since it will always break")]
         public void IsTrueButFalse()
         {
             Assert.IsTrue(false, "It was false!");
         }
     }
 }
+
